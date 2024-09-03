@@ -9,15 +9,19 @@ namespace Let_Him_Cook_Final
 {
     public class Camera
     {
+        public Camera(Vector2 inputOffset) {
+            staterOffset = inputOffset;
+        }
+        Vector2 staterOffset; 
         public Matrix Transform { get; private set; }
         //Vector2 WindowSize = new Vector2(1600, 900);
         public void Follow(Char01 target)
         {
-            if (target.CharPosition.X < 800 && target.CharPosition.X > 450 && target.CharPosition.Y < 600 && target.CharPosition.Y > 200)
+            if (target.CharPosition.X < 1168 && target.CharPosition.X > 368 && target.CharPosition.Y < 600 && target.CharPosition.Y > 192)
             {
                 var position = Matrix.CreateTranslation(
-              -target.CharPosition.X - (target.playerBox.Width / 2),
-              -target.CharPosition.Y - (target.playerBox.Height / 2),
+              -target.CharPosition.X - (target.playerBox.Width / 2) + staterOffset.X,
+              -target.CharPosition.Y - (target.playerBox.Height / 2) + staterOffset.Y,
               0);
 
                 var offset = Matrix.CreateTranslation(

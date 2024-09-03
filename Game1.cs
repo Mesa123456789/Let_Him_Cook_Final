@@ -68,8 +68,8 @@ namespace Let_Him_Cook_Final
         {
             _graphics = new GraphicsDeviceManager(this);
             WindowSize = new(1600,900);
-            _graphics.PreferredBackBufferWidth = 1600;
-            _graphics.PreferredBackBufferHeight = 900;
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 450;
             _graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -124,7 +124,7 @@ namespace Let_Him_Cook_Final
             menu1 = Content.Load<Texture2D>("map");
             //door = Content.Load<Texture2D>("end");
             inventory = Content.Load<Texture2D>("inventory");
-            _camera = new Camera();
+            _camera = new Camera(new Vector2(-400,-225));
         }
 
         protected override void Update(GameTime gameTime)
