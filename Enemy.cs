@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Let_Him_Cook_Final
+
 {
     public class Enemy : Food
     {
@@ -29,12 +30,12 @@ namespace Let_Him_Cook_Final
             
             if (foodBox.Intersects(Game1.player.playerBox) && isHit == false)
             {
-                Game1.player.CharPosition.X -= 5;
+                //Game1.player.CharPosition.X -= 5;
                 Hit();
                 MouseState ms = Mouse.GetState();
                 if(ms.LeftButton == ButtonState.Pressed)
                 {
-                    OnCollied();
+                    OnCollision();
                 }
                 
             }
@@ -52,21 +53,23 @@ namespace Let_Him_Cook_Final
 
         }
 
-        public override void Hit()
+
+
+        public void Hit()
         {
             Game1.player.Life -= 1;
             //enemyPosition = Vector2.Zero;
         }
-        public override void OnCollied()
+        public override void OnCollision()
         {
-            Game1.bag.Add(this);
+            OntableAble = true;
+            Game1.BagList.Add(this);
+            Game1.IsPopUp = true;
             foreach (Enemy enemy in Game1.enemyList)
             {
                 Game1.enemyList.Remove(this);
                 break;
             }
-
-
         }
 
     }
