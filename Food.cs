@@ -14,7 +14,7 @@ namespace Let_Him_Cook_Final
         public Vector2 foodPosition;
         public Rectangle foodBox;
         public Texture2D foodTexture;
-        public List<Food> MenuList = new List<Food>();
+        
         public int getFood;
         public bool OntableAble;
 
@@ -22,7 +22,7 @@ namespace Let_Him_Cook_Final
         {
             this.foodTexture = foodTexture;
             this.foodPosition = foodPosition;
-            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y,64,64);
+            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y,50,50);
             OntableAble = false;
 
         }
@@ -38,7 +38,7 @@ namespace Let_Him_Cook_Final
 
                 }
             }
-            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, 64,64);
+            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y,50,50);
         }
 
         public override void Draw(SpriteBatch _spriteBatch)

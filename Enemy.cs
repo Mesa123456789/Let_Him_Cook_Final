@@ -27,17 +27,14 @@ namespace Let_Him_Cook_Final
 
         public override void Update(GameTime gameTime)
         {
-            
-            if (foodBox.Intersects(Game1.player.playerBox) && isHit == false)
+            MouseState ms = Mouse.GetState();
+            if (foodBox.Intersects(Game1.player.playerBox) && !isHit && !OntableAble)
             {
-                //Game1.player.CharPosition.X -= 5;
-                Hit();
-                MouseState ms = Mouse.GetState();
-                if(ms.LeftButton == ButtonState.Pressed)
+                if (ms.LeftButton == ButtonState.Pressed)
                 {
                     OnCollision();
+
                 }
-                
             }
             if (isHit == true)
             {
@@ -50,6 +47,7 @@ namespace Let_Him_Cook_Final
                     }
                 }
             }
+            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y,50,50);
 
         }
 
