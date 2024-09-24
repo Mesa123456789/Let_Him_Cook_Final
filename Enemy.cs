@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Let_Him_Cook_Final
+namespace LET_HIM_COOK_FINAL
 
 {
     public class Enemy : Food
@@ -48,7 +48,7 @@ namespace Let_Him_Cook_Final
                     }
                 }
             }
-            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y,50,50);
+            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, 50, 50);
 
         }
 
@@ -56,7 +56,6 @@ namespace Let_Him_Cook_Final
 
         public void Hit()
         {
-            Game1.player.Life -= 1;
             Game1.currentHeart -= 20;
             isHit = true;
 

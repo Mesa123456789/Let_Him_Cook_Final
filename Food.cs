@@ -1,13 +1,13 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Let_Him_Cook_Final
+namespace LET_HIM_COOK_FINAL
 {
     public class Food : Sprite
     {
@@ -21,7 +21,7 @@ namespace Let_Him_Cook_Final
         {
             this.foodTexture = foodTexture;
             this.foodPosition = foodPosition;
-            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y,50,50);
+            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, 50, 50);
             OntableAble = false;
 
         }
@@ -37,7 +37,7 @@ namespace Let_Him_Cook_Final
 
                 }
             }
-            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y,50,50);
+            foodBox = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, 50, 50);
         }
 
         public override void Draw(SpriteBatch _spriteBatch)

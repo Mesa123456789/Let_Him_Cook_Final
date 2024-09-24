@@ -7,7 +7,7 @@ using System.Text;
 using static System.Formats.Asn1.AsnWriter;
 
 
-namespace Let_Him_Cook_Final
+namespace LET_HIM_COOK_FINAL
 {
     public class Game1 : Game
     {
@@ -117,7 +117,7 @@ namespace Let_Him_Cook_Final
             player = new Char01(SpriteTexture, CharPosition);
             SpriteTexture.Load(Content, "Char01_1", Frames, FramesRow, FramesPerSec);
             fade = true;
-            FinsihCooking  = false;
+            FinsihCooking = false;
             base.Initialize();
         }
         protected override void LoadContent()
@@ -127,7 +127,7 @@ namespace Let_Him_Cook_Final
             // TODO: use this.Content to load your game content here
             food = new Food(foodTex, foodPos);
             enemy = new Enemy(enemyTex, enemyPos);
-            
+
             //food
             foodTexture = Content.Load<Texture2D>("chicken");
             foodTex2 = Content.Load<Texture2D>("enemy");
@@ -164,11 +164,11 @@ namespace Let_Him_Cook_Final
             MenuList.Add(new Enemy(foodTex10, new Vector2(100, 250)));
             MenuList.Add(new Enemy(foodTex11, new Vector2(150, 280)));
             //font
-            font = Content.Load<SpriteFont>("myfonts");
-            heart = Content.Load<SpriteFont>("Life");
+            font = Content.Load<SpriteFont>("myfontss");
+            //heart = Content.Load<SpriteFont>("Life");
             bg = Content.Load<Texture2D>("map");
             bg2 = Content.Load<Texture2D>("In_Restaurant");
-            inventory = Content.Load<Texture2D>("inventory");
+            inventory = Content.Load<Texture2D>("inventory (2)");
             popup = Content.Load<Texture2D>("popup");
             craft = Content.Load<Texture2D>("craft");
             table = Content.Load<Texture2D>("table");
@@ -224,6 +224,9 @@ namespace Let_Him_Cook_Final
                     }
             }
             _spriteBatch.End();
+            _spriteBatch.Begin();
+            DrawUiGameplay();
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
@@ -246,37 +249,17 @@ namespace Let_Him_Cook_Final
                 player.CharPosition = new Vector2(770, 385);
                 fade = true;
             }
-            bagRec = new Rectangle((int)(player.CharPosition.X + 350), (int)(player.CharPosition.Y - 220), 30,30);
+            bagRec = new Rectangle((int)(player.CharPosition.X + 350), (int)(player.CharPosition.Y - 220), 30, 30);
             bookRec = new Rectangle((int)(player.CharPosition.X + 350), (int)(player.CharPosition.Y - 170), 30, 30);
-            questboxRec = new Rectangle((int)(player.CharPosition.X + 350), (int)(player.CharPosition.Y - 120), 30, 30);
+            questboxRec = new Rectangle((int)(player.CharPosition.X + 350), (int)(player.CharPosition.Y - 100), 30, 30);
             MouseState ms = Mouse.GetState();
-            Rectangle mouseBox = new Rectangle((int)_camera.worldPos.X + (int)temp_mouse.X, (int)_camera.worldPos.Y + (int)temp_mouse.Y,50,50);
+            Rectangle mouseBox = new Rectangle((int)_camera.worldPos.X + (int)temp_mouse.X, (int)_camera.worldPos.Y + (int)temp_mouse.Y, 50, 50);
             temp_mouse.X = ms.X;
             temp_mouse.Y = ms.Y;
-            
+
             ////////////////Camera////////////////////
             _camera.Follow(player);
-            if (player.CharPosition.X > 368 && player.CharPosition.X < 1168 && player.CharPosition.Y > 192 && player.CharPosition.Y < 600)
-            {
-                DrawOriginUi = true;
-                DrawOriginUiY = true;
-            }
-            else if (player.CharPosition.X < 368)
-            {
-                DrawOriginUi = false;
-            }
-            //else if (player.CharPosition.X < 1168)
-            //{
-            //    DrawOriginUi = false;
-            //}
-            else if (player.CharPosition.Y < 192)
-            {
-                DrawOriginUiY = false;
-            }
-            //else if (player.CharPosition.Y < 600)
-            //{
-            //    DrawOriginUi = false;
-            //}
+          
 
             if (mouseBox.Intersects(bagRec))
             {
@@ -291,31 +274,12 @@ namespace Let_Him_Cook_Final
                 ShowInventory = false;
                 OnCursor = false;
             }
-            if (mouseBox.Intersects(bookRec))
-            {
-                OnCursor1 = true;
-            }
-            else
-            {
-                OnCursor1 = false;
-            }
-            if (mouseBox.Intersects(questboxRec))
-            {
-                OnCursor2 = true;
-            }
-            else
-            {
-                OnCursor2 = false;
-            }
-
-            if (currentHeart < 60)
-            {
-                color = Color.Red;
-            }
-            else
-            {
-                color = Color.White;
-            }
+            if (mouseBox.Intersects(bookRec)) { OnCursor1 = true; }
+            else { OnCursor1 = false; }
+            if (mouseBox.Intersects(questboxRec)) { OnCursor2 = true; }
+            else { OnCursor2 = false; }
+            if (currentHeart < 60) { color = Color.Red;}
+            else { color = Color.White; }
             ////////////////Food.Update////////////////////
             for (int i = foodList.Count - 1; i >= 0; i--)
             {
@@ -342,7 +306,7 @@ namespace Let_Him_Cook_Final
         {
             MouseState ms = Mouse.GetState();
             Rectangle mouseBox = new Rectangle((int)_camera.worldPos.X + (int)temp_mouse.X, (int)_camera.worldPos.Y + (int)temp_mouse.Y, 50, 50);
-            Rectangle mouseCraftBox = new Rectangle((int)_camera.worldPos2.X + (int)temp_mouse.X, (int)_camera.worldPos2.Y + (int)temp_mouse.Y, 30,30);
+            Rectangle mouseCraftBox = new Rectangle((int)_camera.worldPos2.X + (int)temp_mouse.X, (int)_camera.worldPos2.Y + (int)temp_mouse.Y, 30, 30);
             if (player.playerBox.Intersects(doorRestaurantRec))
             {
                 mCurrentScreen = ScreenState.Gameplay;
@@ -357,9 +321,23 @@ namespace Let_Him_Cook_Final
             //    clicked = true;
             //}
             //else { clicked = false; }
+            if (mouseBox.Intersects(bagRec))
+            {
+                OnCursor = true;
+                if (ms.LeftButton == ButtonState.Pressed && mouseBox.Intersects(bagRec))
+                {
+                    ShowInventory = true;
+                }
+            }
+            else { ShowInventory = false; OnCursor = false; }
             temp_mouse.X = ms.X;
             temp_mouse.Y = ms.Y;
-            if (Keyboard.GetState().IsKeyDown(Keys.E)) { ShowInventory = true; } else { ShowInventory = false; }
+            if (mouseBox.Intersects(bookRec)) { OnCursor1 = true; }
+            else { OnCursor1 = false; }
+            if (mouseBox.Intersects(questboxRec)) { OnCursor2 = true; }
+            else { OnCursor2 = false; }
+            if (currentHeart < 60) { color = Color.Red; }
+            else { color = Color.White; }
             if (player.playerBox.Intersects(FrigeRec))
             {
                 IsFrigeInterect = true;
@@ -381,7 +359,7 @@ namespace Let_Him_Cook_Final
             for (int i = 0; i < BagList.Count; i++)
             {
                 BagList[i].Update(gameTime);
-                if (mouseBox.Intersects(BagList[i].foodBox) && ms.LeftButton == ButtonState.Pressed && Ontable )
+                if (mouseBox.Intersects(BagList[i].foodBox) && ms.LeftButton == ButtonState.Pressed && Ontable)
                 {
                     food.getFood++;
                     CraftList.Add(BagList[i]);
@@ -391,13 +369,13 @@ namespace Let_Him_Cook_Final
             }
             if (mouseBox.Intersects(equalBox) && ms.LeftButton == ButtonState.Pressed && Ontable && !FinsihCooking)
             {
-                if(food.getFood == 2)
+                if (food.getFood == 2)
                 {
                     Crafting = true;
                     MenuPopup = 1;
                 }
             }
-            if(Crafting == true && MenuPopup == 0) { FinsihCooking = true; } else { FinsihCooking = false; }
+            if (Crafting == true && MenuPopup == 0) { FinsihCooking = true; } else { FinsihCooking = false; }
             for (int i = 0; i < BagList.Count; i++)
             {
                 BagList[i].Update(gameTime);
@@ -417,7 +395,7 @@ namespace Let_Him_Cook_Final
             MouseState ms = Mouse.GetState();
             ////////////////Map////////////////////
             _spriteBatch.Draw(bg, new Rectangle(0, 0, 1600, 900), Color.White);
-            _spriteBatch.DrawString(heart, player.Life.ToString(), new Vector2(10, 30), Color.White);
+            //_spriteBatch.DrawString(heart, player.Life.ToString(), new Vector2(10, 30), Color.White);
             ////////////////Food.Draw////////////////////
             foreach (Food food in foodList)
             {
@@ -437,77 +415,9 @@ namespace Let_Him_Cook_Final
             ////////////////player////////////////////
             player.Draw(_spriteBatch);
             ////////////////Inventory////////////////////
-            if (ShowInventory == true)
-            {
-                _spriteBatch.Draw(inventory, new Vector2(player.CharPosition.X - 240, player.CharPosition.Y - 70), Color.White);
-                for (int i = 0; i < BagList.Count; i++)
-                {
-                    _spriteBatch.Draw(BagList[i].foodTexture, new Vector2((player.CharPosition.X - 210) + i * 52, player.CharPosition.Y - 40), Color.White);
-                }
-            }
             ////////////////popup////////////////////
-            foreach (Food food in BagList)
-            {
-                if (IsPopUp == true)
-                {
-                    for (int i = 0; i < BagList.Count; i++)
-                    {
-                        _spriteBatch.Draw(popup, new Vector2(player.CharPosition.X + 270, player.CharPosition.Y ), Color.White);
-                        _spriteBatch.Draw(BagList[i].foodTexture, new Vector2(player.CharPosition.X + 280, player.CharPosition.Y + 8 ), Color.White);
-                    }
-                    CountTime(200);
-                }
-            }
-            if(DrawOriginUi == true && DrawOriginUiY == true)
-            {
-                _spriteBatch.Draw(bag, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 180), new Rectangle(0, 0, 64, 44), Color.White);
-                if (OnCursor == true)
-                {
-                    _spriteBatch.Draw(bag, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 180), new Rectangle(64, 0, 44, 44), Color.White);
-                }
-                _spriteBatch.Draw(book, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 130), new Rectangle(0, 0, 64, 44), Color.White);
-                if (OnCursor1 == true)
-                {
-                    _spriteBatch.Draw(book, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 130), new Rectangle(64, 0, 44, 44), Color.White);
-                }
-                _spriteBatch.Draw(Quest, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 80), new Rectangle(0, 0, 64, 44), Color.White);
-                if (OnCursor2 == true)
-                {
-                    _spriteBatch.Draw(Quest, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 80), new Rectangle(64, 0, 44, 44), Color.White);
-                }
-                _spriteBatch.Draw(uiHeart, new Vector2(player.CharPosition.X - 261, player.CharPosition.Y - 174),
-    new Rectangle(0, 0, currentHeart + 10, 18), color);
-                _spriteBatch.Draw(ui, new Vector2(player.CharPosition.X - 365, player.CharPosition.Y - 190), Color.White);
-                SpriteTexture.DrawFrame(_spriteBatch, new Vector2(player.CharPosition.X - 350, player.CharPosition.Y - 170), 1);
-            }
-            
-            if(DrawOriginUi == false)
-            {
-                _spriteBatch.Draw(bag, new Vector2(715, player.CharPosition.Y - 180), new Rectangle(0, 0, 64, 44), Color.White);
-                if (OnCursor == true)
-                {
-                    _spriteBatch.Draw(bag, new Vector2(715, player.CharPosition.Y - 180), new Rectangle(64, 0, 44, 44), Color.White);
-                }
-                _spriteBatch.Draw(book, new Vector2(715, player.CharPosition.Y - 130), new Rectangle(0, 0, 64, 44), Color.White);
-                if (OnCursor1 == true)
-                {
-                    _spriteBatch.Draw(book, new Vector2(715, player.CharPosition.Y - 130), new Rectangle(64, 0, 44, 44), Color.White);
-                }
-                _spriteBatch.Draw(Quest, new Vector2(715, player.CharPosition.Y - 80), new Rectangle(0, 0, 64, 44), Color.White);
-                if (OnCursor2 == true)
-                {
-                    _spriteBatch.Draw(Quest, new Vector2(715, player.CharPosition.Y - 80), new Rectangle(64, 0, 44, 44), Color.White);
-                }
-                _spriteBatch.Draw(uiHeart, new Vector2(109, player.CharPosition.Y - 174),
-    new Rectangle(0, 0, currentHeart + 10, 18), color);
-                _spriteBatch.Draw(ui, new Vector2(5, player.CharPosition.Y - 190), Color.White);
-                SpriteTexture.DrawFrame(_spriteBatch, new Vector2(20, player.CharPosition.Y - 170), 1);
-            }
-            if(DrawOriginUiY == false)
-            {
-                _spriteBatch.Draw(bag, new Vector2(player.CharPosition.X + 350, 20), new Rectangle(0, 0, 64, 44), Color.White);
-            }
-            
+           
+
             if (fade == true)
             {
                 _spriteBatch.Draw(bg, new Rectangle(0, 0, 1600, 900), Color.Black);
@@ -539,14 +449,6 @@ namespace Let_Him_Cook_Final
             {
                 _spriteBatch.Draw(bg, new Rectangle(0, 0, 1600, 900), Color.Black);
                 CountTime(70);
-            }
-            if (ShowInventory == true)
-            {
-                _spriteBatch.Draw(inventory, new Vector2(520,320), Color.White);
-                for (int i = 0; i < BagList.Count; i++)
-                {
-                    _spriteBatch.Draw(BagList[i].foodTexture, new Vector2((player.CharPosition.X - 210) + i * 52, player.CharPosition.Y - 40), Color.White);
-                }
             }
             if (Ontable == true)
             {
@@ -581,6 +483,49 @@ namespace Let_Him_Cook_Final
             }
 
         }
+        public void DrawUiGameplay()
+        {
+            foreach (Food food in BagList)
+            {
+                if (IsPopUp == true)
+                {
+                    for (int i = 0; i < BagList.Count; i++)
+                    {
+                        _spriteBatch.Draw(popup, new Vector2(635,170), Color.White);
+                        _spriteBatch.Draw(BagList[i].foodTexture, new Vector2(653, 180), Color.White);
+                    }
+                    CountTime(100);
+                }
+            }
+            if (ShowInventory == true)
+            {
+                _spriteBatch.Draw(inventory, new Vector2(123,125), Color.White);
+                for (int i = 0; i < BagList.Count; i++)
+                {
+                    _spriteBatch.Draw(BagList[i].foodTexture, new Vector2(153 + i * 53, 156), Color.White);
+                }
+            }
+            _spriteBatch.Draw(bag, new Vector2(735,15), new Rectangle(0, 0, 64, 44), Color.White);
+            if (OnCursor == true)
+            {
+                _spriteBatch.Draw(bag, new Vector2(735, 15), new Rectangle(64, 0, 44, 44), Color.White);
+            }
+            _spriteBatch.Draw(book, new Vector2(735, 65), new Rectangle(0, 0, 64, 44), Color.White);
+            if (OnCursor1 == true)
+            {
+                _spriteBatch.Draw(book, new Vector2(735, 65), new Rectangle(64, 0, 44, 44), Color.White);
+            }
+            _spriteBatch.Draw(Quest, new Vector2(735, 115), new Rectangle(0, 0, 64, 44), Color.White);
+            if (OnCursor2 == true)
+            {
+                _spriteBatch.Draw(Quest, new Vector2(735, 115), new Rectangle(64, 0, 44, 44), Color.White);
+            }
+            _spriteBatch.Draw(uiHeart, new Vector2(110,22),
+new Rectangle(0, 0, currentHeart + 10, 18), color);
+            _spriteBatch.Draw(ui, new Vector2(6,6), Color.White);
+            SpriteTexture.DrawFrame(_spriteBatch, new Vector2(23,25), 1);
+
+        }
         public int countPopUp;
         public void CountTime(int timePopup)
         {
@@ -594,7 +539,7 @@ namespace Let_Him_Cook_Final
                     fade = false;
                     MenuPopup = 0;
                     ShowInventory = false;
-                    
+
                 }
             }
         }

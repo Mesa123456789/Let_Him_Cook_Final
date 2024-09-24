@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:../../../../Downloads/popup.png;popup.png
 
-#begin ../../../../Downloads/ui.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../../Downloads/ui.png;ui.png
-
 #begin BabiQ.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -169,18 +157,6 @@
 /processorParam:TextureFormat=Color
 /build:fruit.png
 
-#begin HealthBar_thumb.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:HealthBar_thumb.png;popup.png
-
 #begin In_Restaurant.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -192,6 +168,13 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:In_Restaurant.png
+
+#begin InputText.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:InputText.spritefont
 
 #begin interact.png
 /importer:TextureImporter
@@ -215,14 +198,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Inventory (2).png;Inventory.png
-
-#begin Life.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Life.spritefont
+/build:Inventory (2).png
 
 #begin map.png
 /importer:TextureImporter
@@ -260,12 +236,12 @@
 /processorParam:TextureFormat=Color
 /build:mushroom2.png
 
-#begin myfonts.spritefont
+#begin myfontss.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:myfonts.spritefont
+/build:myfontss.spritefont
 
 #begin pumkin.png
 /importer:TextureImporter
@@ -302,6 +278,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Quest.png
+
+#begin Restauran.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Restauran.png
 
 #begin snail.png
 /importer:TextureImporter
@@ -350,6 +338,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:tempura.png
+
+#begin ui.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ui.png
 
 #begin uiHeart.png
 /importer:TextureImporter

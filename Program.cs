@@ -1,3 +1,3 @@
 ﻿
-using var game = new Let_Him_Cook_Final.Game1();
+using var game = new LET_HIM_COOK_FINAL.Game1();
 game.Run();

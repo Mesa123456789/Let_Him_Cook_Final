@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Let_Him_Cook_Final
+namespace LET_HIM_COOK_FINAL
 {
     public class Camera
     {
