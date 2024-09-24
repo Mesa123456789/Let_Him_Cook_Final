@@ -235,6 +235,9 @@ namespace Let_Him_Cook_Final
         bool OnCursor = false;
         bool OnCursor1 = false;
         bool OnCursor2 = false;
+        bool DrawOriginUi;
+        bool DrawOriginUiY;
+
         public void UpdateGameplay(GameTime gameTime)
         {
             if (player.playerBox.Intersects(doorRec))
@@ -250,9 +253,32 @@ namespace Let_Him_Cook_Final
             Rectangle mouseBox = new Rectangle((int)_camera.worldPos.X + (int)temp_mouse.X, (int)_camera.worldPos.Y + (int)temp_mouse.Y,50,50);
             temp_mouse.X = ms.X;
             temp_mouse.Y = ms.Y;
+            
             ////////////////Camera////////////////////
             _camera.Follow(player);
-            if(mouseBox.Intersects(bagRec))
+            if (player.CharPosition.X > 368 && player.CharPosition.X < 1168 && player.CharPosition.Y > 192 && player.CharPosition.Y < 600)
+            {
+                DrawOriginUi = true;
+                DrawOriginUiY = true;
+            }
+            else if (player.CharPosition.X < 368)
+            {
+                DrawOriginUi = false;
+            }
+            //else if (player.CharPosition.X < 1168)
+            //{
+            //    DrawOriginUi = false;
+            //}
+            else if (player.CharPosition.Y < 192)
+            {
+                DrawOriginUiY = false;
+            }
+            //else if (player.CharPosition.Y < 600)
+            //{
+            //    DrawOriginUi = false;
+            //}
+
+            if (mouseBox.Intersects(bagRec))
             {
                 OnCursor = true;
                 if (ms.LeftButton == ButtonState.Pressed && mouseBox.Intersects(bagRec))
@@ -432,27 +458,56 @@ namespace Let_Him_Cook_Final
                     CountTime(200);
                 }
             }
+            if(DrawOriginUi == true && DrawOriginUiY == true)
+            {
+                _spriteBatch.Draw(bag, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 180), new Rectangle(0, 0, 64, 44), Color.White);
+                if (OnCursor == true)
+                {
+                    _spriteBatch.Draw(bag, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 180), new Rectangle(64, 0, 44, 44), Color.White);
+                }
+                _spriteBatch.Draw(book, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 130), new Rectangle(0, 0, 64, 44), Color.White);
+                if (OnCursor1 == true)
+                {
+                    _spriteBatch.Draw(book, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 130), new Rectangle(64, 0, 44, 44), Color.White);
+                }
+                _spriteBatch.Draw(Quest, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 80), new Rectangle(0, 0, 64, 44), Color.White);
+                if (OnCursor2 == true)
+                {
+                    _spriteBatch.Draw(Quest, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 80), new Rectangle(64, 0, 44, 44), Color.White);
+                }
+                _spriteBatch.Draw(uiHeart, new Vector2(player.CharPosition.X - 261, player.CharPosition.Y - 174),
+    new Rectangle(0, 0, currentHeart + 10, 18), color);
+                _spriteBatch.Draw(ui, new Vector2(player.CharPosition.X - 365, player.CharPosition.Y - 190), Color.White);
+                SpriteTexture.DrawFrame(_spriteBatch, new Vector2(player.CharPosition.X - 350, player.CharPosition.Y - 170), 1);
+            }
             
-            _spriteBatch.Draw(bag, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 180), new Rectangle(0, 0, 64, 44), Color.White);
-            if (OnCursor == true)
+            if(DrawOriginUi == false)
             {
-                _spriteBatch.Draw(bag, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 180), new Rectangle(64, 0, 44, 44), Color.White);
+                _spriteBatch.Draw(bag, new Vector2(715, player.CharPosition.Y - 180), new Rectangle(0, 0, 64, 44), Color.White);
+                if (OnCursor == true)
+                {
+                    _spriteBatch.Draw(bag, new Vector2(715, player.CharPosition.Y - 180), new Rectangle(64, 0, 44, 44), Color.White);
+                }
+                _spriteBatch.Draw(book, new Vector2(715, player.CharPosition.Y - 130), new Rectangle(0, 0, 64, 44), Color.White);
+                if (OnCursor1 == true)
+                {
+                    _spriteBatch.Draw(book, new Vector2(715, player.CharPosition.Y - 130), new Rectangle(64, 0, 44, 44), Color.White);
+                }
+                _spriteBatch.Draw(Quest, new Vector2(715, player.CharPosition.Y - 80), new Rectangle(0, 0, 64, 44), Color.White);
+                if (OnCursor2 == true)
+                {
+                    _spriteBatch.Draw(Quest, new Vector2(715, player.CharPosition.Y - 80), new Rectangle(64, 0, 44, 44), Color.White);
+                }
+                _spriteBatch.Draw(uiHeart, new Vector2(109, player.CharPosition.Y - 174),
+    new Rectangle(0, 0, currentHeart + 10, 18), color);
+                _spriteBatch.Draw(ui, new Vector2(5, player.CharPosition.Y - 190), Color.White);
+                SpriteTexture.DrawFrame(_spriteBatch, new Vector2(20, player.CharPosition.Y - 170), 1);
             }
-            _spriteBatch.Draw(book, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 130), new Rectangle(0, 0, 64, 44), Color.White);
-            if(OnCursor1 == true)
+            if(DrawOriginUiY == false)
             {
-                _spriteBatch.Draw(book, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 130), new Rectangle(64, 0, 44, 44), Color.White);
-            }
-            _spriteBatch.Draw(Quest, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 80), new Rectangle(0, 0, 64, 44), Color.White);
-            if(OnCursor2 == true)
-            {
-                _spriteBatch.Draw(Quest, new Vector2(player.CharPosition.X + 350, player.CharPosition.Y - 80), new Rectangle(64, 0, 44, 44), Color.White);
+                _spriteBatch.Draw(bag, new Vector2(player.CharPosition.X + 350, 20), new Rectangle(0, 0, 64, 44), Color.White);
             }
             
-            _spriteBatch.Draw(uiHeart, new Vector2(player.CharPosition.X - 261,player.CharPosition.Y - 174), 
-                new Rectangle(0,0,currentHeart + 10,18), color);
-            _spriteBatch.Draw(ui, new Vector2(player.CharPosition.X - 365, player.CharPosition.Y - 190), Color.White);
-            SpriteTexture.DrawFrame(_spriteBatch, new Vector2(player.CharPosition.X - 350, player.CharPosition.Y - 170),1);
             if (fade == true)
             {
                 _spriteBatch.Draw(bg, new Rectangle(0, 0, 1600, 900), Color.Black);
