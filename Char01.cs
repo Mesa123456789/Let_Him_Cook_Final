@@ -38,7 +38,7 @@ namespace Let_Him_Cook_Final
 
 
 
-        public void Update(GameTime gameTime , Viewport viewport)
+        public void Update(GameTime gameTime)
         {
 
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;

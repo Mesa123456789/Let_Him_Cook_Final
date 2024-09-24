@@ -14,7 +14,6 @@ namespace Let_Him_Cook_Final
         public Vector2 foodPosition;
         public Rectangle foodBox;
         public Texture2D foodTexture;
-        
         public int getFood;
         public bool OntableAble;
 
@@ -56,6 +55,7 @@ namespace Let_Him_Cook_Final
                 break;
             }
         }
+
 
     }
 }

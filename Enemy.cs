@@ -30,6 +30,7 @@ namespace Let_Him_Cook_Final
             MouseState ms = Mouse.GetState();
             if (foodBox.Intersects(Game1.player.playerBox) && !isHit && !OntableAble)
             {
+                Hit();
                 if (ms.LeftButton == ButtonState.Pressed)
                 {
                     OnCollision();
@@ -56,7 +57,9 @@ namespace Let_Him_Cook_Final
         public void Hit()
         {
             Game1.player.Life -= 1;
-            //enemyPosition = Vector2.Zero;
+            Game1.currentHeart -= 20;
+            isHit = true;
+
         }
         public override void OnCollision()
         {
