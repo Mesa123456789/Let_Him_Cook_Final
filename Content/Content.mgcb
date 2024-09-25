@@ -13,18 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../../Downloads/popup.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../../Downloads/popup.png;popup.png
-
 #begin BabiQ.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -61,6 +49,18 @@
 /processorParam:TextureFormat=Color
 /build:book.png
 
+#begin BookUI.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BookUI.png
+
 #begin Char01_1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -72,6 +72,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Char01_1.png
+
+#begin chest.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:chest.png
 
 #begin chicken.png
 /importer:TextureImporter
@@ -145,6 +157,18 @@
 /processorParam:TextureFormat=Color
 /build:flower.png
 
+#begin FridgeUI.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FridgeUI.png
+
 #begin fruit.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -169,13 +193,6 @@
 /processorParam:TextureFormat=Color
 /build:In_Restaurant.png
 
-#begin InputText.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:InputText.spritefont
-
 #begin interact.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -188,7 +205,7 @@
 /processorParam:TextureFormat=Color
 /build:interact.png
 
-#begin Inventory (2).png
+#begin Inventory.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -198,7 +215,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Inventory (2).png
+/build:Inventory.png
 
 #begin map.png
 /importer:TextureImporter
@@ -236,12 +253,24 @@
 /processorParam:TextureFormat=Color
 /build:mushroom2.png
 
-#begin myfontss.spritefont
+#begin myfontsss.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:myfontss.spritefont
+/build:myfontsss.spritefont
+
+#begin popup.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:popup.png
 
 #begin pumkin.png
 /importer:TextureImporter
@@ -279,6 +308,18 @@
 /processorParam:TextureFormat=Color
 /build:Quest.png
 
+#begin QuestUI.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:QuestUI.png
+
 #begin Restauran.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -314,18 +355,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:snail2.png
-
-#begin table.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:table.png
 
 #begin tempura.png
 /importer:TextureImporter

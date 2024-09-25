@@ -51,6 +51,8 @@ namespace LET_HIM_COOK_FINAL
         Texture2D menu1;
         Texture2D craft;
         Texture2D popup;
+        Texture2D FridgeUi;
+        Texture2D bookUi;
         public Vector2 foodPos;
         public Texture2D foodTex;
         public Vector2 enemyPos;
@@ -58,6 +60,7 @@ namespace LET_HIM_COOK_FINAL
         Texture2D ui;
         Texture2D uiHeart;
         Texture2D bag;
+        public Texture2D QuestUI;
         public Texture2D Quest;
         public Texture2D book;
         ////////////////Player////////////////////
@@ -77,6 +80,7 @@ namespace LET_HIM_COOK_FINAL
         public static List<Enemy> enemyList = new();
         public static List<Food> CraftList = new List<Food>();
         public static List<Food> MenuList = new List<Food>();
+        public static List<Texture2D> FoodMenuList = new List<Texture2D>();
         ////////////////boolean////////////////////
         bool ShowInventory = false;
         bool IsEnd = false;
@@ -164,14 +168,13 @@ namespace LET_HIM_COOK_FINAL
             MenuList.Add(new Enemy(foodTex10, new Vector2(100, 250)));
             MenuList.Add(new Enemy(foodTex11, new Vector2(150, 280)));
             //font
-            font = Content.Load<SpriteFont>("myfontss");
+            font = Content.Load<SpriteFont>("myfontsss");
             //heart = Content.Load<SpriteFont>("Life");
             bg = Content.Load<Texture2D>("map");
             bg2 = Content.Load<Texture2D>("In_Restaurant");
-            inventory = Content.Load<Texture2D>("inventory (2)");
+            inventory = Content.Load<Texture2D>("inventory");
             popup = Content.Load<Texture2D>("popup");
             craft = Content.Load<Texture2D>("craft");
-            table = Content.Load<Texture2D>("table");
             interact = Content.Load<Texture2D>("interact");
             uni = Content.Load<Texture2D>("Uni");
             babiq = Content.Load<Texture2D>("BabiQ");
@@ -182,6 +185,9 @@ namespace LET_HIM_COOK_FINAL
             book = Content.Load<Texture2D>("book");
             Quest = Content.Load<Texture2D>("Quest");
             bag = Content.Load<Texture2D>("bag");
+            FridgeUi = Content.Load<Texture2D>("FridgeUI");
+            bookUi = Content.Load<Texture2D>("BookUI");
+            QuestUI = Content.Load<Texture2D>("QuestUI");
             currentHeart = uiHeart.Width - 10;
             mCurrentScreen = ScreenState.Gameplay;
         }
@@ -230,7 +236,6 @@ namespace LET_HIM_COOK_FINAL
 
             base.Draw(gameTime);
         }
-
         public Rectangle doorRec = new Rectangle(810, 380, 50, 2);
         public Rectangle doorRestaurantRec = new Rectangle(530, 230, 100, 2);
         public static int currentHeart;
@@ -238,8 +243,9 @@ namespace LET_HIM_COOK_FINAL
         bool OnCursor = false;
         bool OnCursor1 = false;
         bool OnCursor2 = false;
-        bool DrawOriginUi;
-        bool DrawOriginUiY;
+        bool openbookUI = false;
+        bool openQuestUI = false;
+        bool openFridgeUI = false;
 
         public void UpdateGameplay(GameTime gameTime)
         {
@@ -259,8 +265,16 @@ namespace LET_HIM_COOK_FINAL
 
             ////////////////Camera////////////////////
             _camera.Follow(player);
-          
-
+            if (mouseBox.Intersects(bookRec) && ms.LeftButton == ButtonState.Pressed)
+            {
+                openbookUI = true;
+            }
+            else { openbookUI = false; }
+            if (mouseBox.Intersects(questboxRec) && ms.LeftButton == ButtonState.Pressed)
+            {
+                openQuestUI = true;
+            }
+            else { openQuestUI = false; }
             if (mouseBox.Intersects(bagRec))
             {
                 OnCursor = true;
@@ -274,6 +288,7 @@ namespace LET_HIM_COOK_FINAL
                 ShowInventory = false;
                 OnCursor = false;
             }
+
             if (mouseBox.Intersects(bookRec)) { OnCursor1 = true; }
             else { OnCursor1 = false; }
             if (mouseBox.Intersects(questboxRec)) { OnCursor2 = true; }
@@ -290,7 +305,6 @@ namespace LET_HIM_COOK_FINAL
                 enemyList[i].Update(gameTime);
             }
             player.Update(gameTime);
-
         }
 
         public static Vector2 tablePos = new Vector2(848, 345);
@@ -302,6 +316,7 @@ namespace LET_HIM_COOK_FINAL
         public Rectangle FrigeRec = new Rectangle(750, 310, 40, 80);
         int getbabiq;
         bool FinsihCooking;
+
         public void UpdateRestaurant(GameTime gameTime)
         {
             MouseState ms = Mouse.GetState();
@@ -330,6 +345,7 @@ namespace LET_HIM_COOK_FINAL
                 }
             }
             else { ShowInventory = false; OnCursor = false; }
+
             temp_mouse.X = ms.X;
             temp_mouse.Y = ms.Y;
             if (mouseBox.Intersects(bookRec)) { OnCursor1 = true; }
@@ -338,11 +354,25 @@ namespace LET_HIM_COOK_FINAL
             else { OnCursor2 = false; }
             if (currentHeart < 60) { color = Color.Red; }
             else { color = Color.White; }
+            if(mouseBox.Intersects(bookRec) && ms.LeftButton == ButtonState.Pressed)
+            {
+                openbookUI = true;
+            }
+            else { openbookUI = false; }
+            if (mouseBox.Intersects(questboxRec) && ms.LeftButton == ButtonState.Pressed)
+            {
+                openQuestUI = true;
+            }
+            else { openQuestUI = false; }
             if (player.playerBox.Intersects(FrigeRec))
             {
                 IsFrigeInterect = true;
+                if(mouseBox.Intersects(FrigeRec) && ms.LeftButton == ButtonState.Pressed)
+                {
+                    openFridgeUI = true;
+                }
             }
-            else { IsFrigeInterect = false; }
+            else { IsFrigeInterect = false; openFridgeUI = false; }
             if (player.playerBox.Intersects(tableBox))
             {
                 IsInterect = true;
@@ -373,6 +403,7 @@ namespace LET_HIM_COOK_FINAL
                 {
                     Crafting = true;
                     MenuPopup = 1;
+                    FoodMenuList.Add(uni);
                 }
             }
             if (Crafting == true && MenuPopup == 0) { FinsihCooking = true; } else { FinsihCooking = false; }
@@ -450,6 +481,10 @@ namespace LET_HIM_COOK_FINAL
                 _spriteBatch.Draw(bg, new Rectangle(0, 0, 1600, 900), Color.Black);
                 CountTime(70);
             }
+            if (GotMenu == true)
+            {
+                _spriteBatch.Draw(uni, new Rectangle((int)player.CharPosition.X, (int)player.CharPosition.Y, 32, 32), Color.White);
+            }
             if (Ontable == true)
             {
                 _spriteBatch.Draw(craft, new Vector2(600, 220), Color.White);
@@ -475,6 +510,7 @@ namespace LET_HIM_COOK_FINAL
                     _spriteBatch.Draw(uni, new Rectangle(680, 300, 128, 128), Color.White);
                     GotMenu = true;
                 }
+                
                 CountTime(200);
             }
             if (clicked == true)
@@ -485,6 +521,20 @@ namespace LET_HIM_COOK_FINAL
         }
         public void DrawUiGameplay()
         {
+            if (openFridgeUI == true)
+            {
+                _spriteBatch.Draw(FridgeUi, new Vector2(0,0), Color.White);
+            }
+            if (openQuestUI == true)
+            {
+                _spriteBatch.Draw(QuestUI, new Vector2(0, 0), Color.White);
+            }
+            if(openbookUI == true)
+            {
+                _spriteBatch.Draw(bookUi, new Vector2(0, 0), Color.White);
+            }
+            
+            
             foreach (Food food in BagList)
             {
                 if (IsPopUp == true)
